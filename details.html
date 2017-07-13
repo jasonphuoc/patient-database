@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>Patient Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="js/details.js"></script>
+</head>
+    
+<body>
+    
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">Monrovia Hospital</a>
+        </div>
+        
+        <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html">Search</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+</nav>
+
+<img src="logo2.png" class="center-block img-responsive" alt="Logo" width="500px">
+
+<div id="details" ng-app="myApp" ng-controller="myCtrl">
+    
+    <h1 class="title">Patient Details</h1>
+    
+    <h3>Basic</h3>
+    <hr class="divider" />
+    <p>{{record.SBRPerson.Person.FirstName + " " + record.SBRPerson.Person.LastName}}</p>
+
+    <div class="row">
+        <p class="col-sm-4">{{"EUID: " + record.id}}</p>
+        <p class="col-sm-3">{{"Gender: " + record.SBRPerson.Person.Gender}}</p>
+    </div>
+    <div class="row">
+        <p class="col-sm-4">{{"SSN: " + record.SBRPerson.Person.SSN}}</p>
+        <p class="col-sm-3">{{"DOB: " + record.SBRPerson.Person.DOB}}</p>
+    </div>
+    <h3>Contact</h3>
+    <hr class="divider" />
+    <p>Address(es):</p>
+    <p ng-repeat="address in addressAry">{{address.AddressLine1 + ", " + address.City + ", " + address.StateCode + " " + address.PostalCode + " (" + address.AddressType + ")"}}</p>
+    <p>Phone Number(s):</p>
+    <p ng-repeat="phone in record.SBRPerson.Person.Phone">{{phone.Phone + " (" + phone.PhoneType + ")"}}
+    </p>
+    <h3>Relations</h3>
+    <hr class="divider" />
+    <div ng-repeat="relation in record.Relations" class="separator">
+        <p>{{relation.partyName}}</p>
+        <p>{{"Relationship: " + relation.relationship}}</p>
+        <p class="margin-b-25">{{"EUID: " + relation.id}}</p>
+    </div>
+    <h3>Documents</h3>
+    <hr class="divider" />
+    <div ng-repeat="document in record.Documents" class="separator margin-b-25">
+        <p>{{document.title}}</p>
+        <div ng-repeat="(test, result) in document.results">
+            <div ng-switch="test">
+                <div ng-switch-when="imageUrl">
+                    <img ng-src="{{'data/' + result}}" class="docImg img-responsive">
+                </div>
+                <div ng-switch-default>
+                    <p>{{test + ": " +  result}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3>Metadata</h3>
+    <hr class="divider" />
+    <p>{{"Record Create Date: " + record.SBRPerson.CreateDateTime}}</p>
+    <p>{{"Record Create System: " + record.SBRPerson.CreateSystem}}</p>
+    <p class="title">{{"Status: " + record.status}}</p>
+</div>   
+
+</body>
+    
+</html>

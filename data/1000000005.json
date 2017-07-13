@@ -1,0 +1,52 @@
+{
+	"id": "1000000005",
+	"status": "active",
+	"SBRPerson": {
+		"ChildType": "Person",
+		"CreateDateTime": "2017-03-27",
+		"CreateSystem": "SYSTEM A",
+		"Person": {
+			"Address": [1, 2, 3],
+			"DOB": "1945-12-24",
+			"FirstName": "ELIZABETH",
+			"Gender": "F",
+			"LastName": "SMITH-JONES",
+			"Phone": [{
+				"Phone": "3035205474",
+				"PhoneType": "HOME"
+			}, {
+				"Phone": "3238675309",
+				"PhoneType": "CELL"
+			}],
+			"SSN": "772543613"
+		}
+	},
+	"Relations": [{
+		"id": "1000002082",
+		"partyType": "Person",
+		"partyName": "SMITH ALBERT",
+		"relationship": "Child of"
+	}, {
+		"id": "1000014211",
+		"partyType": "Person",
+		"relationType": "emergency",
+		"partyName": "MARK YU",
+		"relationship": "Emergency contact of"
+	}],
+	"Documents": [{
+		"title": "LIPID PROFILE",
+		"results": {
+			"HDL_Cholesterol": "289 mg/dL",
+			"Triglyceride": "29 mg/dL",
+			"VLDL": "17 mg/dL",
+			"LDL": "65 mg/dL",
+			"Cholesterol": "1346 mg/dL"
+		}
+	}, {
+		"title": "XRAY",
+		"results": {
+			"imageUrl": "xray.png",
+			"diagnosis": "compound fracture fibia"
+		}
+	}]
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>Patient Database</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+    
+<body>
+    
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">Monrovia Hospital</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+</nav>
+    
+<img src="logo2.png" class="center-block img-responsive" alt="Logo" width="500px">
+
+<div ng-class="searchResults" id="search" ng-app="myApp" ng-controller="myCtrl">
+    
+    <h1 class="title">Patient Search</h1>
+    
+    <form ng-submit="search()" class="margin-b-50" id="search-form">
+        <div class="form-group row">
+            <div class="col-xs-3">
+                <input class="form-control" id="firstName" type="text" placeholder="First" ng-model="firstname">
+            </div>
+            <div class="col-xs-3">
+                <input class="form-control" id="lastName" name="lastname" type="text" placeholder="Last" ng-model="lastname">
+            </div>
+            <div class="col-xs-3">
+                <input class="form-control" id="euid" name="euid" type="text" placeholder="EUID (10 digits)" ng-model="euid">
+            </div>
+            
+        </div>
+        <div class="form-group row">    
+            <div class="col-xs-4">
+                <input class="form-control" id="city" type="text" placeholder="City" ng-model="city">
+            </div>
+            <div class="col-xs-3">
+                <input class="form-control" id="state" name="state" type="text" placeholder="State Abbrev. (e.g. CA)" ng-model="state">
+            </div>
+            <div class="col-xs-2">
+                <input class="form-control" id="zipcode" name="zipcode" type="text" placeholder="Zip Code" ng-model="zipcode">
+            </div>
+        </div>
+        <div class="form-group row">
+            <p class="col-xs-3">At least one field required.</p>
+        </div>
+        <input type="submit" value="Search" class="btn btn-primary" ng-disabled="!(!!firstname || !!lastname  || !!euid || !!zipcode || !!state || !!city)" id="submit">
+    </form>
+    
+    <div class="table-responsive" id="search-results">
+    <h3 class="margin-b-25">Search Results</h3>
+    <p id="result-details"></p>
+    <table ng-repeat="record in records">
+    <tr>
+        <td class="t-col col-xs-4">{{record.Person.FirstName}}</td>
+        <td class="t-col col-xs-2">{{record.Person.LastName}}</td>
+        <td class="t-col col-xs-2">{{"DOB: " + record.Person.DOB}}</td>
+    </tr>
+    <tr>
+        <td class="t-col col-xs-4">{{"EUID: " + record.EUID}}</td>
+        <td class="t-col col-xs-2">{{"Gender: " + record.Person.Gender}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="t-col col-xs-4">{{"Address: \n\n" + record.Person.Address[0].AddressLine1 + " " + record.Person.Address[0].City + ", " + record.Person.Address[0].StateCode + " " + record.Person.Address[0].PostalCode}}</td>
+        <td class="t-col col-xs-2">{{"Phone: " + record.Person.Phone[0].Phone}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="t-col col-xs-4" colspan="3"><a ng-href="details.html?euid={{record.EUID}}">Details</a></td>
+    </tr>
+    </table>
+    </div>
+    
+</div>   
+
+</body>
+    
+</html>

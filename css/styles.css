@@ -1,0 +1,61 @@
+#search {
+    margin: 50px 5% 0px 15%;
+}
+
+#details {
+    margin: 50px 5% 0px 15%;
+}
+
+#details p {
+    font-size: 16px;
+}
+
+.greenBG {
+    background-color: green; 
+    display: block;
+}
+
+#search-results {
+    display: none;
+}
+
+.title {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.t-col {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    padding: 0px 10px 15px 0px;
+    vertical-align: text-top;
+    
+}
+
+.margin-b-25 {
+    margin-bottom: 25px;
+}
+
+.margin-b-50 {
+    margin-bottom: 50px;
+}
+
+.divider {
+    border-top: 1px solid #ddd;
+}
+
+.docImg {
+    max-height: 500px;
+    max-width: 500px;
+    margin-bottom: 10px;
+}
+
+form {
+    width: 98%;
+}
+
+table {
+    border-bottom: 2px dotted #ddd;
+    margin-bottom: 35px;
+}
+
